@@ -1,4 +1,4 @@
-# Easy Peasy
+# [Easy Peasy](https://play.picoctf.org/practice/challenge/125?category=2&page=1&search=)
 
 * This is an OTP (One Time Password) CTF (Capture The Flag), where the encryption process is defined in such a way that encrypted_msg = encrypt (msg, key), where 'key' is a random or time-based value, somewhat akin to adding salt in hashing.
 
