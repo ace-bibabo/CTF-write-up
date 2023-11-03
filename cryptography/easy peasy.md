@@ -49,4 +49,10 @@ if __name__ == '__main__':
     # print(encrypt_text, text)
 
     decrypt(pretend_text, pretend_flag, key_location, encrypt_text)
- ```
+ 
+
+
+```
+~~~
+ picoCTF{7f9da29f40499a98db220380a57746a4}
+~~~
