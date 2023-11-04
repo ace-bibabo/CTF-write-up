@@ -54,7 +54,7 @@ p.close()
 ```
 
 
-![](https://github.com/ace-lii/ctf_writeups/blob/main/img/chained2.png?raw=true)
+> ENROL_IN_COMP6477
 
  
 
