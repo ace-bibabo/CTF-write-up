@@ -31,5 +31,5 @@ with open('file.jpg', 'wb') as new_file:
     new_file.write(new_header)
     new_file.write(original_data) 
 ```
-
-![]()
+> flag s
+![](https://github.com/li-li-ge/ctf_writeups/blob/main/code/forensics_wargames/war1/file.jpg?raw=true)
