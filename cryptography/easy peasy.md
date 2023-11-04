@@ -1,6 +1,8 @@
 # [Easy Peasy](https://play.picoctf.org/practice/challenge/125?category=2&page=1&search=)
 
-* This is an OTP (One Time Password) CTF (Capture The Flag), where the encryption process is defined in such a way that encrypted_msg = encrypt (msg, key), where 'key' is a random or time-based value, somewhat akin to adding salt in hashing.
+> This is an OTP (One Time Password) CTF (Capture The Flag), where the encryption process is defined in such a way that encrypted_msg = encrypt (msg, key), where 'key' is a random or time-based value, somewhat akin to adding salt in hashing.
+
+> A one-time password (OTP), also known as a one-time PIN, one-time authorization code (OTAC) or dynamic password, is a password that is valid for only one login session or transaction, on a computer system or other digital device. OTPs avoid several shortcomings that are associated with traditional (static) password-based authentication; a number of implementations also incorporate two-factor authentication by ensuring that the one-time password requires access to something a person has (such as a small keyring fob device with the OTP calculator built into it, or a smartcard or specific cellphone) as well as something a person knows (such as a PIN).
 
 * from the encrypted flag's length = 64, while the original length should be 32 characters. This is due to the following line in the code:
  
