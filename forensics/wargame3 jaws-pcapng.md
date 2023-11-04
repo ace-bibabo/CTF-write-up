@@ -1,4 +1,5 @@
 # [wargame3 jaws.pcapng](https://github.com/li-li-ge/ctf_writeups/blob/main/code/forensics_wargames/war3_networks/jaws.pcapng)
+>[PcapNG file format](https://pcapng.com/), since it enables coherent data to be stored in a single file rather than having to use multiple files.
 
 * its a pcapng so try to open it by ***wireshark*** jaws.pcapng (need to install Wireshark first)
 go through all the records , and you can use filter by http.accept got ur first flag
