@@ -1,4 +1,7 @@
 # warmup
+>Base64 is a group of tetrasexagesimal binary-to-text encoding schemes that represent binary data (more specifically, a sequence of 8-bit bytes) in sequences of 24 bits that can be represented by four 6-bit Base64 digits.
+
+
 ```
 text = "NDM0ZjRkNTA3YjQ5NWY2ODRmNzA0NTVmNzkzMDc1NWY0MTUyMzM1Zjc3NjE3MjZkNjU2NDVmMzI1ZjY2Njk2ZTY0NWY2ZDMwNzI0NTVmNDYzMTYxNjc3MzIxN2Q="
 ```
