@@ -5,7 +5,7 @@
 
 
 * Determine where these two random numbers are stored in memory using Binary Ninja.
-* 
+
 ![](https://github.com/ace-lii/ctf_writeups/blob/main/img/chained3.png?raw=true)
 
 * Calculate the sum as you obtain values from the "random1/2" addresses. Use ***pwntools*** to play around with the chained.
