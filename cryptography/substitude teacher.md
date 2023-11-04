@@ -1,4 +1,4 @@
-# [substitude teacher]()
+# [substitude teacher](https://github.com/li-li-ge/ctf_writeups/tree/main/code/substitude%20teacher)
 
 
 * The encryption used is p = Polynomial([1, 2, 1]), which means f(x) = 1x^2 + 2x + x. If we have f(x) which is the spicy flag, we can calculate x as the original character. Consequently, we obtain COMP6841{g?M??_?0?T}.
