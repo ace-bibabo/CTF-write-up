@@ -3,8 +3,12 @@
 * Open ***Binary Ninja*** as usual. Examine the main function to understand the logic. It generates two random numbers below 1000, sums them, and compares the result with the input.
 ![](https://github.com/ace-lii/ctf_writeups/blob/main/img/chained1.png?raw=true)
 
+
 * Determine where these two random numbers are stored in memory using Binary Ninja.
-Calculate the sum as you obtain values from the "random1/2" addresses. Use ***pwntools*** to play around with the chained.
+* 
+![](https://github.com/ace-lii/ctf_writeups/blob/main/img/chained3.png?raw=true)
+
+* Calculate the sum as you obtain values from the "random1/2" addresses. Use ***pwntools*** to play around with the chained.
 
 ```
 from pwn import *
