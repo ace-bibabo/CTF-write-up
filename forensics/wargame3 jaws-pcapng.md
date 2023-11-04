@@ -3,7 +3,7 @@
 * its a pcapng so try to open it by ***wireshark*** jaws.pcapng (need to install Wireshark first)
 go through all the records , and you can use filter by http.accept got ur first flag
 
-![]()
+![](https://github.com/ace-lii/ctf_writeups/blob/main/img/jaw.png?raw=true)
 
 > COMP6841{IS_HTTPS_REALLY_NECCESSARY?}
 
