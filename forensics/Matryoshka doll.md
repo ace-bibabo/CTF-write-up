@@ -2,6 +2,13 @@
 
 use ***binwalk*** to get flag from matryoshka doll
 
+```
+ 1012  binwalk dolls.jpg
+ 1013  binwalk -e  dolls.jpg
+ 1014  binwalk -e  _dolls.jpg
+ 1015  binwalk -e  _dolls.jpg.extracted/123.png
+ 1016  binwalk -e  _dolls.jpg.extracted/_123.png.extracted/base_images/3_c.jpg
+```
 
 
 ```
