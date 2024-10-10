@@ -49,5 +49,5 @@ def interact_with_process(binary_path, host=None, port=None):
     p.interactive()
 
 # Example usage
-interact_with_process('', '6447.lol', 26246)
+interact_with_process('', 'lol', 26246)
 ```
