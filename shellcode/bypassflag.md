@@ -106,6 +106,6 @@ def interact_with_process(binary_path, host=None, port=None):
 
 
 # Example usage
-interact_with_process('', '6447.lol', 6192)
+interact_with_process('', 'lol', 6192)
 
 ```
