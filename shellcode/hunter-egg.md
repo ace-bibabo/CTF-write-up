@@ -50,7 +50,7 @@ from pwn import *
 
 context.arch = 'amd64'
 
-p = remote('6447.lol', 20709)
+p = remote('lol', 20709)
 
 # context.terminal = ['tmux', 'splitw', '-h']
 # p = process('./find-me')
