@@ -25,7 +25,7 @@
 	
 		```
 		p.recvuntil(b"Hello friend, welcome to xft. what's your handle?")
-	p.sendline(b"%1$p")
+		p.sendline(b"%1$p")
 		```
 	
 	* get the offset to printf
