@@ -11,7 +11,7 @@
 - **COMP9337: Securing Fixed & Wireless Networks**  
   Explores security mechanisms for both fixed and wireless network infrastructures.
 
-- **COMP6447: Security Assessment**  
+- **COMP6447: System and Software Security Assessment**  
   Focuses on evaluating and improving the security posture of systems through assessments.
 
 ### Programming
