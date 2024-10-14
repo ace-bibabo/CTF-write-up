@@ -1,3 +1,4 @@
+	
 	| Attribute                          | Detailed Description                                                                                                                |
 |------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | **Architecture**                   | The binary is for a 64-bit architecture and uses little-endian byte ordering, where the least significant byte is stored first.     |
