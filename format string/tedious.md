@@ -2,15 +2,14 @@
 
   ```
   Arch:       amd64-64-little
-  `RELRO:      No RELRO`
+  RELRO:      No RELRO
   Stack:      No canary found
   NX:         NX enabled
-  `PIE:        No PIE (0x400000)`
+  PIE:        No PIE (0x400000)
   SHSTK:      Enabled
   IBT:        Enabled
   Stripped:   No
   ```
-
 
 * overwrite printf addr to win addr by exploiting sprintf, since printf no vulns
 * offset: 5th, but buffer shifts from rbp-0x200 -> rbp-0x600 between fgets and sprintf, 1024bytes, which means: the newer offset should be 5 + 1024/8 = 133.
