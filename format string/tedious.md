@@ -1,4 +1,4 @@
-* checksec tedious: no PIE and no RELRO
+* `checksec` tedious: no PIE and no RELRO
 
   ```
   Arch:       amd64-64-little
